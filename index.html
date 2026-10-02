@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Kosovo War Documentary - WebXR Exhibition</title>
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene background="color: #1a1a1a">
+      <a-assets>
+        <img id="placeholder-photo" src="https://picsum.photos/800/600" crossorigin="anonymous">
+      </a-assets>
+
+      <!-- LOADS DIRECTLY FROM THE SAME DIRECTORY ON GITHUB PAGES -->
+      <a-entity 
+        gltf-model="./kosovo-webxr.glb" 
+        position="0 0 0" 
+        scale="1 1 1">
+      </a-entity>
+
+      <!-- LIGHTING -->
+      <a-light type="ambient" intensity="1.0"></a-light>
+      <a-light type="directional" position="-1 4 1" intensity="1.0"></a-light>
+
+      <!-- SAMPLE INTERACTIVE PHOTO FRAME -->
+      <a-plane 
+        src="#placeholder-photo" 
+        position="0 1.6 -2" 
+        width="1.6" 
+        height="1.2"
+        class="clickable">
+      </a-plane>
+
+      <!-- USER CAMERA & CONTROLS -->
+      <a-entity id="rig" position="0 1.6 3">
+        <a-camera look-controls WASD-controls>
+          <a-cursor color="#FF0000" raycaster="objects: .clickable"></a-cursor>
+        </a-camera>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
